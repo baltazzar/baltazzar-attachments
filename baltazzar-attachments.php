@@ -159,4 +159,12 @@ function wpatt_plugin_menu(){
     add_options_page('WP Attachments - Settings', 'WP Attachments', 'manage_options', 'wpatt-option-page', 'wpatt_plugin_options');
 }
 
+require 'plugin-update-checker/plugin-update-checker.php';
+$repoInfo = PucFactory::getLatestClassVersion('PucGitHubChecker');
+$myUpdateChecker = new $repoInfo(
+    'https://github.com/baltazzar/baltazzar-attachments/',
+    __FILE__,
+    'master'
+);
+
 ?>
