@@ -1,0 +1,43 @@
+<div class="wrap">
+    <h2>BaltazZar Attachments {{version}} <a href="http://wordpress.org/support/view/plugin-reviews/wp-attachments" target="_blank" class="add-new-h2"><em>Rate this plugin!</em></a><a href="http://wordpress.org/plugins/wp-attachments/changelog/" target="_blank" class="add-new-h2"><em>Changelog</em></a></h2>
+    
+    <h3>
+    {{__('Options','wp-attachments')}}
+    </h3>
+    
+    <div id="welcome-panel" class="welcome-panel">
+    
+    <form method="post" name="options" target="_self">
+    
+    <table class="form-table">
+        <tr valign="top">
+        <th scope="row">{{__('List Title','wp-attachments')}}</th>
+        <td><input type="text" name="wpatt_option_localization_n" value="{{wpatt_option_localization_n}}"/>
+        &nbsp;{{__('Insert here the title you want for the attachments list','wp-attachments')}}</td></tr>
+    
+        <tr><th scope="row">{{__('Include images','wp-attachments')}}</th>
+        <td><input type="checkbox" name="wpatt_option_includeimages_n" 
+        {{wpatt_option_includeimages_n}}/>&nbsp;{{__('Check this option if you want to include images (.jpg, .jpeg, .gif, .png) in the attachments list','wp-attachments')}}
+        </td>
+    </tr>
+
+    <tr><th scope="row">{{__('Show date','wp-attachments') }}</th>
+        <td><input type="checkbox" name="wpatt_option_showdate_n" 
+        {{wpatt_option_showdate_n}}/>&nbsp;{{__('Check this if you want to show the date of file upload','wp-attachments')}}
+        </td>
+    </tr>
+    
+    <tr><th scope="row">{{__('Open in new tab','wp-attachments')}}</th>
+        <td><input type="checkbox" name="wpatt_option_targetblank_n" 
+     {{wpatt_option_targetblank_n}}
+    />
+    &nbsp;{{__('Check this option if you want to add target="_blank" to every file listed in order to open it in a new tab','wp-attachments')
+    }}</td>
+    </tr></table>
+    
+    
+    
+    </table><p class="submit"><input type="submit" class="button-primary" name="Submit" value="{{__('Save')}}"/></p>
+    
+    </form></div>
+</div>

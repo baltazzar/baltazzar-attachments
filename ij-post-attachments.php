@@ -107,9 +107,9 @@ class IJ_Post_Attachments
 		if ($hook_suffix != 'post.php')
 			return;
 
-		wp_enqueue_script('syoHint', IJ_POST_ATTACHMENTS_URL . 'scripts/jquery.syoHint.js', array('jquery'), '1.0.10');
+		wp_enqueue_script('syoHint', IJ_POST_ATTACHMENTS_URL . 'js/jquery.syoHint.js', array('jquery'), '1.0.10');
 		wp_enqueue_script(
-			'ij-post-attachments', IJ_POST_ATTACHMENTS_URL . 'scripts/ij-post-attachments.js',
+			'ij-post-attachments', IJ_POST_ATTACHMENTS_URL . 'js/ij-post-attachments.js',
 			array('syoHint', 'jquery-ui-sortable'), IJ_POST_ATTACHMENTS_VER
 		);
 
@@ -129,7 +129,7 @@ class IJ_Post_Attachments
 	{
 		global $hook_suffix;
 		if ($hook_suffix == 'post.php' || $hook_suffix == 'post-new.php' )
-			wp_enqueue_style('ij-post-attachments', IJ_POST_ATTACHMENTS_URL . 'styles/ij-post-attachments.css', array(), IJ_POST_ATTACHMENTS_VER);
+			wp_enqueue_style('ij-post-attachments', IJ_POST_ATTACHMENTS_URL . 'css/ij-post-attachments.css', array(), IJ_POST_ATTACHMENTS_VER);
 	}
 
 	/**
@@ -151,7 +151,7 @@ class IJ_Post_Attachments
 			'posts_per_page' => 1000
 		));
 
-		include IJ_POST_ATTACHMENTS_DIR . '/html/metabox.php';
+		include IJ_POST_ATTACHMENTS_DIR . '/templates/metabox.php';
 	}
 	//</editor-fold>
 
@@ -169,7 +169,7 @@ class IJ_Post_Attachments
 
 		// I don't know if all these scripts are really needed by the media edit screen.
 		// They're just there, so they'll be here too :P
-		include IJ_POST_ATTACHMENTS_DIR . '/html/attachmentEditHead.php';
+		include IJ_POST_ATTACHMENTS_DIR . '/templates/attachmentEditHead.php';
 
 		// Add the needed vars to set the thumbnail :)
 		$wp_scripts->localize('set-post-thumbnail', 'post_id', $_GET['post_id']);
@@ -186,7 +186,7 @@ class IJ_Post_Attachments
 	{
 		$url    = admin_url('media.php');
 		$id     = $_REQUEST['attachment_id'];
-		include IJ_POST_ATTACHMENTS_DIR . '/html/attachmentEditIframe.php';
+		include IJ_POST_ATTACHMENTS_DIR . '/templates/attachmentEditIframe.php';
 	}
 
 	/**

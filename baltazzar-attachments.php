@@ -6,17 +6,31 @@ Author: Thiago Ribeiro, Renato Mestre, Leonardo Góes
 Version: 1.0.0
 Author URI: http://github.com/baltazzar
 */
+require plugin_dir_path(__FILE__) . 'includes/plugin-update-checker/plugin-update-checker.php';
+$repoInfo = PucFactory::getLatestClassVersion('PucGitHubChecker');
+$myUpdateChecker = new $repoInfo(
+    'https://github.com/baltazzar/baltazzar-attachments/',
+    __FILE__,
+    'master'
+);
+
+
+define('BTZ_ATT_PATH',  plugin_dir_path( __FILE__ ));
+define("BTZ_ATT_PLUGINPATH", "/" . dirname(plugin_basename( __FILE__ )));
+define('BTZ_ATT_TEXTDOMAIN', 'codestyling-localization');
+define('BTZ_ATT_BASE_URL', plugins_url(BTZ_ATT_PLUGINPATH));
+
 
 function wpa_action_init()
 {
     load_plugin_textdomain( 'wp-attachments', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
     update_option( 'wpa_version_number', '3.5.7' );
-    wp_enqueue_style('wpa-css', plugin_dir_url(__FILE__) . 'styles/frontend.css');
+    wp_enqueue_style('wpa-css', plugin_dir_url(__FILE__) . 'css/frontend.css');
 }
 
 // Add actions
 add_action('init', 'wpa_action_init');
-require_once(plugin_dir_path(__FILE__) . 'settings.php');
+require_once(plugin_dir_path(__FILE__) . 'views/settings.php');
 require_once(plugin_dir_path(__FILE__) . 'ij-post-attachments.php');
 require_once(plugin_dir_path(__FILE__) . 'attach_unattach_reattach.php');
 
@@ -156,15 +170,7 @@ function wpatt_reg_settings() {
 add_action('admin_menu', 'wpatt_plugin_menu');
 
 function wpatt_plugin_menu(){
-    add_options_page('WP Attachments - Settings', 'WP Attachments', 'manage_options', 'wpatt-option-page', 'wpatt_plugin_options');
+    add_options_page('BaltazZar Attachments - Configurações', 'BaltazZar Attachments', 'manage_options', 'wpatt-option-page', 'wpatt_plugin_options');
 }
-
-require 'plugin-update-checker/plugin-update-checker.php';
-$repoInfo = PucFactory::getLatestClassVersion('PucGitHubChecker');
-$myUpdateChecker = new $repoInfo(
-    'https://github.com/baltazzar/baltazzar-attachments/',
-    __FILE__,
-    'master'
-);
 
 ?>
