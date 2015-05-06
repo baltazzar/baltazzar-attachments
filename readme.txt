@@ -1,8 +1,8 @@
 === Baltazzar Attachments ===
-Contributors: Thiago Ribeiro, Renato Mestre, Leonardo Góes
+Contributors: BaltazZar™
 Tags: attachments
 Requires at least: 4.0
-Tested up to: 4.1.1
+Tested up to: 4.2.1
 Version: 1.0
 Stable tag: 1.0
 License: GPLv2 or later

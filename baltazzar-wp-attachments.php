@@ -2,24 +2,32 @@
 /*
 Plugin Name: BaltazZar Attachments
 Description: WordPress attachments plugin with back-end and front-end interfaces developed by BaltazZar Team. Based on WP Attachments.
-Author: Thiago Ribeiro, Renato Mestre, Leonardo Góes
+Author: BaltazZar™
 Version: 1.0.0
 Author URI: http://github.com/baltazzar
 */
-require plugin_dir_path(__FILE__) . 'includes/plugin-update-checker/plugin-update-checker.php';
+define('BTZ_ATT_PATH',  plugin_dir_path( __FILE__ ));
+define("BTZ_ATT_PLUGINPATH", "/" . dirname(plugin_basename( __FILE__ )));
+define('BTZ_ATT_TEXTDOMAIN', 'codestyling-localization');
+define('BTZ_ATT_BASE_URL', plugins_url(BTZ_ATT_PLUGINPATH));
+
+if(!defined('BTZ_CORE_PATH')) {
+    add_action( 'admin_notices', 'my_admin_error_notice' );
+    function my_admin_error_notice() {
+        $class = "update-nag";
+        $message = "O BaltazZar Attachments precisa do plugin <a href=\"https://github.com/baltazzar/baltazzar-wp-core/\">BaltazZar Core</a> para funcionar adequadamente!";
+        echo "<div class=\"$class\"> <p>$message</p></div>"; 
+    }
+    return;
+}
+
+require BTZ_CORE_PATH . '/includes/plugin-update-checker/plugin-update-checker.php';
 $repoInfo = PucFactory::getLatestClassVersion('PucGitHubChecker');
 $myUpdateChecker = new $repoInfo(
     'https://github.com/baltazzar/baltazzar-attachments/',
     __FILE__,
     'master'
 );
-
-
-define('BTZ_ATT_PATH',  plugin_dir_path( __FILE__ ));
-define("BTZ_ATT_PLUGINPATH", "/" . dirname(plugin_basename( __FILE__ )));
-define('BTZ_ATT_TEXTDOMAIN', 'codestyling-localization');
-define('BTZ_ATT_BASE_URL', plugins_url(BTZ_ATT_PLUGINPATH));
-
 
 function wpa_action_init()
 {
