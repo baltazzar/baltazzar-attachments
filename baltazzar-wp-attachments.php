@@ -3,35 +3,45 @@
 Plugin Name: BaltazZar Attachments
 Description: WordPress attachments plugin with back-end and front-end interfaces developed by BaltazZar Team. Based on WP Attachments.
 Author: BaltazZar™
-Version: 1.0.0
+Version: 1.1.0
 Author URI: http://github.com/baltazzar
+Text Domain: wp-attachments
+Domain Path: /languages
 */
 define('BTZ_ATT_PATH',  plugin_dir_path( __FILE__ ));
 define("BTZ_ATT_PLUGINPATH", "/" . dirname(plugin_basename( __FILE__ )));
 define('BTZ_ATT_TEXTDOMAIN', 'codestyling-localization');
 define('BTZ_ATT_BASE_URL', plugins_url(BTZ_ATT_PLUGINPATH));
 
-if(!defined('BTZ_CORE_PATH')) {
-    add_action( 'admin_notices', 'my_admin_error_notice' );
-    function my_admin_error_notice() {
-        $class = "update-nag";
-        $message = "O BaltazZar Attachments precisa do plugin <a href=\"https://github.com/baltazzar/baltazzar-wp-core/\">BaltazZar Core</a> para funcionar adequadamente!";
-        echo "<div class=\"$class\"> <p>$message</p></div>"; 
+add_action('admin_init', 'attachments_init');
+function attachments_init() {
+    if(!defined('BTZ_CORE_PATH')) {
+        add_action( 'admin_notices', 'my_admin_error_notice' );
+        function my_admin_error_notice() {
+            $class = "update-nag";
+            $message = "O BaltazZar Attachments precisa do plugin <a href=\"https://github.com/baltazzar/baltazzar-wp-core/\">BaltazZar Core</a> para funcionar adequadamente!";
+            echo "<div class=\"$class\"> <p>$message</p></div>"; 
+        }
+        return;
     }
-    return;
-}
 
-require BTZ_CORE_PATH . '/includes/plugin-update-checker/plugin-update-checker.php';
-$repoInfo = PucFactory::getLatestClassVersion('PucGitHubChecker');
-$myUpdateChecker = new $repoInfo(
-    'https://github.com/baltazzar/baltazzar-attachments/',
-    __FILE__,
-    'master'
-);
+    require BTZ_CORE_PATH . '/includes/plugin-update-checker/plugin-update-checker.php';
+    $repoInfo = PucFactory::getLatestClassVersion('PucGitHubChecker');
+    $myUpdateChecker = new $repoInfo(
+        'https://github.com/baltazzar/baltazzar-attachments/',
+        __FILE__,
+        'master'
+    );
+}
 
 function wpa_action_init()
 {
-    load_plugin_textdomain( 'wp-attachments', false, dirname( plugin_basename( __FILE__ ) ) . '/languages/' );
+    $path = dirname(plugin_basename( __FILE__ )) . '/languages/';
+    $loaded = load_plugin_textdomain( 'wp-attachments', false, $path);
+    if ($_GET['page'] == basename(__FILE__) && !$loaded) {          
+        echo '<div class="error">Localization: ' . __('Could not load the localization file: ' . $path, 'wp-attachments') . '</div>';
+        return;
+    }
     update_option( 'wpa_version_number', '3.5.7' );
     wp_enqueue_style('wpa-css', plugin_dir_url(__FILE__) . 'css/frontend.css');
 }

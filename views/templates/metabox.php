@@ -24,7 +24,7 @@
 						<a href="<?php echo wp_get_attachment_url($atchment->ID); ?>" class="button button-small"><?php _e('Edit'); ?></a>					
 						<?php $url = admin_url('tools.php?page=unattach&noheader=true&&id=' . $atchment->ID); ?>
 						<a class="button button-small " href="<?php echo esc_url( $url );?>" onclick = "if (! confirm('<?php _e('Are you sure you want to do this?');?>')) { return false; }"><?php echo _e('Unattach','wp-attachments'); ?></a>
-						<a href="<?php echo get_delete_post_link($atchment->ID); ?>" class="button button-small" onclick = "if (! confirm('<?php _e('Are you sure you want to do this?');?>')) { return false; }"><?php _e('Remove'); ?></a>
+						<a href="<?php echo get_delete_post_link($atchment->ID); ?>" class="button button-small" onclick = "if (! confirm('<?php _e('The file will be deleted. Are you sure you want to do this?');?>')) { return false; }"><?php _e('Remove'); ?></a>
 					</div>
 					<h3>
 					<?php echo esc_html($atchment->post_title); ?></h3>

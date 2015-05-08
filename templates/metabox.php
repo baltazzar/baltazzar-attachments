@@ -54,11 +54,12 @@
 		<div class="clear"></div>
 	</div>
 	<?php else: ?>
-	<p><?php _e('No media attachments found.'); ?></p>
+	<p><?php //_e('No media attachments found.'); ?>Nenhum anexo encontrado.</p>
 	<?php endif; ?>
 	<div id="wp-content-media-buttons" style="float:none;" class="wp-media-buttons">
 		<center>
-			<a href="#" id="insert-media-button" class="button insert-media add_media" data-editor="content"><span class="wp-media-buttons-icon"></span> <?php _e('Add Media'); ?></a>
+			<?php wp_editor( $content, 'baltazzar-attachments-editor' ); ?>
+			<a href="#" id="insert-media-button" class="button insert-media add_media add_attachment" data-editor="baltazzar-attachments-editor"><span class="wp-media-buttons-icon"></span> <?php //_e('Add Media'); ?>Adicionar anexo</a>
 		</center>
 		<div class="clear"></div>
 	</div>

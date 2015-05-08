@@ -2,6 +2,17 @@ var IJ_Post_Attachments;
 (function($) {
 	$(document).ready(function() {
 		IJ_Post_Attachments = new InJoin_PostAttachments();
+		$('.add_attachment').click(function(ev) {
+			ev.preventDefault();
+			window.send_to_editor_original = window.send_to_editor;
+			window.send_to_editor = function(html) {
+				console.log(html);
+				window.send_to_editor =	window.send_to_editor_original;
+				window.send_to_editor(html);
+				location.reload();
+			}
+
+		});
 	});
 
 	/**

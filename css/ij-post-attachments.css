@@ -5,10 +5,10 @@
 #ij-post-attachments  {
 	background: transparent;
 }
-#ij-post-attachments alignleft {
+#ij-post-attachments .alignleft {
 	float: none;
+	width: 100%;
 }
-
 
 .ij-post-attachment {
 	float: left;
@@ -36,4 +36,8 @@
 	float: left;
 	margin-right: 5px;
 	cursor: move;
+}
+
+#wp-baltazzar-attachments-editor-wrap {
+	display: none;
 }

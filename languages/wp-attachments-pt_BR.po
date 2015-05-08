@@ -5,18 +5,18 @@ msgstr ""
 "PO-Revision-Date: \n"
 "Last-Translator: Henrique Avila Vianna <contato@henriquevianna.com>\n"
 "Language-Team: Henrique Vianna <contato@henriquevianna.com>\n"
-"Language: pt-BR\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.5.5\n"
+"X-Generator: Poedit 1.6.7\n"
 "X-Poedit-Basepath: .\n"
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-SearchPath-0: ..\n"
 
 #: ../attach_unattach_reattach.php:5
 msgid "Parent"
-msgstr "Mãe"
+msgstr "Pai"
 
 #: ../attach_unattach_reattach.php:13 ../settings.php:84
 msgid "Include images"
@@ -32,7 +32,7 @@ msgstr "Desanexar"
 
 #: ../attach_unattach_reattach.php:36
 msgid "Parent term does not exist."
-msgstr "Elemento mãe não existe."
+msgstr "Elemento pai não existe."
 
 #: ../attach_unattach_reattach.php:39
 msgid "Attach"
@@ -40,11 +40,11 @@ msgstr "Anexar"
 
 #: ../ij-post-attachments.php:87
 msgid "Media"
-msgstr "Mídia"
+msgstr "Anexo"
 
 #: ../ij-post-attachments.php:111
 msgid "Edit Media"
-msgstr "Editar mídia"
+msgstr "Editar anexo"
 
 #: ../settings.php:9
 msgid "You do not have sufficient permissions to access this page."
@@ -110,7 +110,7 @@ msgstr "Anexos"
 
 #: ../html/attachmentEditIframe.php:2 ../html/attachmentEditIframe.php:14
 msgid "Update Media"
-msgstr "Atualizar mídia"
+msgstr "Atualizar anexo"
 
 #: ../html/metabox.php:23
 msgid "Insert into post"
@@ -120,9 +120,15 @@ msgstr "Inserir no post"
 msgid "Edit"
 msgstr "Editar"
 
-#: ../html/metabox.php:26 ../html/metabox.php:27
+#: ../html/metabox.php:25
 msgid "Are you sure you want to do this?"
 msgstr "Tem certeza que deseja fazer isto?"
+
+#: ../html/metabox.php:26 ../html/metabox.php:27
+msgid "The file will be deleted. Are you sure you want to do this?"
+msgstr ""
+"O arquivo será deletado e não poderá ser recuperado. Tem certeza que deseja "
+"fazer isto?"
 
 #: ../html/metabox.php:27
 msgid "Remove"
@@ -130,8 +136,8 @@ msgstr "Mover para lixeira"
 
 #: ../html/metabox.php:57
 msgid "No media attachments found."
-msgstr "Nenhum anexo de mídia encontrado."
+msgstr "Nenhum anexo encontrado."
 
 #: ../html/metabox.php:61
 msgid "Add Media"
-msgstr "Adicionar mídia"
+msgstr "Adicionar anexo"

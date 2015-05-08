@@ -90,7 +90,8 @@ class IJ_Post_Attachments
 		}
 
 		add_meta_box(
-			'ij-post-attachments', __('Media'),
+			// 'ij-post-attachments', __('Media'),
+			'ij-post-attachments', 'Anexos',
 			array($this, 'printMetaBox'), null, 'normal', 'high'
 		);
 	}
